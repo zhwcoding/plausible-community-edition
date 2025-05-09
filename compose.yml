@@ -88,6 +88,10 @@ services:
       - MANDRILL_API_KEY
       - SENDGRID_API_KEY
 
+    ports:
+      - 8080:80
+      - 8443:443
+
 volumes:
   db-data:
   event-data:
