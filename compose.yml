@@ -98,6 +98,11 @@ services:
     networks:
       - dokploy-network        # ✅ 核心改动：加入 Dokploy 主网络
 
+# ✅ 新增网络声明
+networks:
+  dokploy-network:
+    external: true
+
 volumes:
   db-data:
   event-data:
