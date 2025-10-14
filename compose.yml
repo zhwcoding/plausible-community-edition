@@ -9,6 +9,8 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       start_period: 1m
+    networks:
+      - dokploy-network        # ✅ 加入 Dokploy 主网络
 
   plausible_events_db:
     image: clickhouse/clickhouse-server:24.12-alpine
@@ -32,6 +34,8 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --tries=1 -O - http://127.0.0.1:8123/ping || exit 1"]
       start_period: 1m
+    networks:
+      - dokploy-network        # ✅ 加入 Dokploy 主网络
 
   plausible:
     image: ghcr.io/plausible/community-edition:v3.0.1
@@ -91,6 +95,8 @@ services:
     ports:
       - 8080:80
       - 8443:443
+    networks:
+      - dokploy-network        # ✅ 核心改动：加入 Dokploy 主网络
 
 volumes:
   db-data:
